@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Work Day Scheduler</title>
+  </head> 
+
+  <body>
+    <header class="jumbotron">
+      <h1 class="display-3">Work Day Scheduler</h1>
+      <p class="lead">A simple calendar app for scheduling your work day</p>
+      <p id="currentDay" class="lead"></p>
+    </header>
+    <div class="container">
+      <!-- Timeblocks go here -->
+
+      <div class="row time-block">
+        <div class="col hour">9 AM</div><textarea class="col-10 textArea9" value="9"></textarea><button id="save9" class="col saveBtn"></button><!--One-->
+      </div>
+      
+      <div class="row time-block">
+        <div class="col hour">10 AM</div><textarea class="col-10 textArea10" value="10"></textarea><button id="save10" class="col saveBtn"></button><!--Two-->
+      </div>
+
+      <div class="row time-block">
+        <div class="col hour">11 AM</div><textarea class="col-10 textArea11" value="11"></textarea><button id="save11" class="col saveBtn"></button><!--Three-->
+      </div>
+
+      <div class="row time-block">
+        <div class="col hour">12 PM</div><textarea class="col-10 textArea12" value="12"></textarea><button id="save12" class="col saveBtn"></button><!--Four-->
+      </div>
+
+      <div class="row time-block">
+        <div class="col hour">1 PM</div><textarea class="col-10 textArea13" value="13"></textarea><button id="save13" class="col saveBtn"></button><!--Five-->
+      </div>
+
+      <div class="row time-block">
+        <div class="col hour">2 PM</div><textarea class="col-10 textArea14" value="14"></textarea><button id="save14" class="col saveBtn"></button><!--Six-->
+      </div>
+
+      <div class="row time-block">
+        <div class="col hour">3 PM</div><textarea class="col-10 textArea15" value="15"></textarea><button id="save15" class="col saveBtn"></button><!--Seven-->
+      </div>
+
+      <div class="row time-block">
+        <div class="col hour">4 PM</div><textarea class="col-10 textArea16" value="16"></textarea><button id="save16" class="col saveBtn"></button><!--Eight-->
+      </div>
+
+      <div class="row time-block">
+        <div class="col hour">5 PM</div><textarea class="col-10 textArea17" value="17"></textarea><button id="save17" class="col saveBtn"></button><!--Nine-->
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+
+
+          $("#currentDay").text(moment().format('dddd') + ", " + moment().format('LL'));
+
+          var currentTime = moment().hours();
+
+          var currentTime = parseInt(currentTime);
+
+
+
+          $("#save9").on("click", function() {
+
+            var store = $(".textArea9").val();
+            localStorage.setItem("9 AM", store);
+            
+          });
+
+          $("#save10").on("click", function() {
+
+            var store = $(".textArea10").val();
+            localStorage.setItem("10 AM", store);
+
+          });
+
+          $("#save11").on("click", function() {
+
+            var store = $(".textArea11").val();
+            localStorage.setItem("11 AM", store);
+
+          });
+
+          $("#save12").on("click", function() {
+
+            var store = $(".textArea12").val();
+            localStorage.setItem("12 PM", store);
+
+          });
+
+          $("#save13").on("click", function() {
+
+            var store = $(".textArea13").val();
+            localStorage.setItem("1 PM", store);
+
+          });
+          
+          $("#save14").on("click", function() {
+
+            var store = $(".textArea14").val();
+            localStorage.setItem("2 PM", store);
+
+          });
+
+          $("#save15").on("click", function() {
+
+            var store = $(".textArea15").val();
+            localStorage.setItem("3 PM", store);
+
+          });
+
+          $("#save16").on("click", function() {
+
+            var store = $(".textArea16").val();
+            localStorage.setItem("4 PM", store);
+
+          });
+
+          $("#save17").on("click", function() {
+
+            var store = $(".textArea17").val();
+            localStorage.setItem("5 PM", store);
+
+          });
+
+          var nineO = $(".textArea9");
+          var tenO = $(".textArea10");
+          var elevenO = $(".textArea11");
+          var twelveO = $(".textArea12");
+          var oneO = $(".textArea13");
+          var twoO = $(".textArea14");
+          var threeO = $(".textArea15");
+          var fourO = $(".textArea16");
+          var fiveO = $(".textArea17");
+          var timeArray = [nineO, tenO, elevenO, twelveO, oneO, twoO, threeO, fourO, fiveO];
+          
+
+          
+          timeArray.forEach(function(question) {
+            
+            if (question.attr("value") == currentTime) {
+              question.addClass("present");
+            }
+            else if (question.attr("value") < currentTime) {
+              question.addClass("past");
+            }
+            else {
+              question.addClass("future");
+            }
+          
+          });
+             
+
+        });
+          
+    </script>
+  </body>
+</html>

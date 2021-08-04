@@ -1,1 +1,3 @@
 # WorkDayScheduler_Challenge7
+1. Was able to use the CSS to make a nearly identical layout with the HTML. There was one class I did not use out of the CSS file and that was the '.description' class.
+2. Struggled with storing the input from each textarea to local storage but finally did so by creating a variable within the click event instead of on the outside of the click event. It seemed in the class demonstration of the finished product we were aiming to achieve, that the model had the capacity to stack local storage for each textarea. I was able to put each text area input into the local storage but only one deposit of each textarea is working. Not yet knowledgeable on how to fix.
